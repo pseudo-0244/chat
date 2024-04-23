@@ -1,18 +1,34 @@
-const chatBox = document.getElementById('chat-box');
-const messageInput = document.getElementById('message');
+const peer = new Peer(); // Create a new Peer instance
+let conn = null;
+
+peer.on('open', (id) => {
+    console.log('My peer ID is: ' + id);
+});
+
+peer.on('connection', (connection) => {
+    console.log('Connected to: ' + connection.peer);
+    conn = connection;
+    conn.on('data', (data) => {
+        displayMessage(data, 'received');
+    });
+});
 
 function sendMessage() {
-  const message = messageInput.value.trim();
-  if (message !== '') {
-    appendMessage('You', message);
+    const messageInput = document.getElementById('message-input');
+    const message = messageInput.value;
+    if (!conn) {
+        console.log('No peer connection');
+        return;
+    }
+    conn.send(message);
+    displayMessage(message, 'sent');
     messageInput.value = '';
-  }
 }
 
-function appendMessage(sender, message) {
-  const messageElement = document.createElement('div');
-  messageElement.classList.add('message');
-  messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
-  chatBox.appendChild(messageElement);
-  chatBox.scrollTop = chatBox.scrollHeight;
+function displayMessage(message, type) {
+    const messagesDiv = document.getElementById('messages');
+    const messageElement = document.createElement('div');
+    messageElement.className = 'message ' + type;
+    messageElement.innerText = message;
+    messagesDiv.appendChild(messageElement);
 }
