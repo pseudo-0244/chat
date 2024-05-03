@@ -1,47 +1,57 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.chat-container {
-    width: 400px;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+#game {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
 }
 
-.messages {
-    height: 300px;
-    overflow-y: scroll;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
+.hand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.message-input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    border: 1px solid #ccc;
+.hand img {
+  width: 100px;
+  height: auto;
+  margin: 0 10px;
 }
 
-.send-button {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+#buttons {
+  margin-bottom: 20px;
 }
 
-.send-button:hover {
-    background-color: #0056b3;
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#scores {
+  margin-bottom: 20px;
+}
+
+#message {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
 }
