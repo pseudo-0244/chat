@@ -109,20 +109,10 @@ function determineWinner() {
 
 // Update the UI
 function updateUI() {
-  document.getElementById('dealer-hand').innerHTML = '';
-  for (let card of dealerHand) {
-    const img = document.createElement('img');
-    img.src = `images/${card.value}_of_${card.suit}.png`;
-    document.getElementById('dealer-hand').appendChild(img);
-  }
+  document.getElementById('dealer-hand').textContent = dealerHand.map(card => `${card.value} of ${card.suit}`).join(', ');
   document.getElementById('dealer-score').textContent = dealerScore;
 
-  document.getElementById('player-hand').innerHTML = '';
-  for (let card of playerHand) {
-    const img = document.createElement('img');
-    img.src = `images/${card.value}_of_${card.suit}.png`;
-    document.getElementById('player-hand').appendChild(img);
-  }
+  document.getElementById('player-hand').textContent = playerHand.map(card => `${card.value} of ${card.suit}`).join(', ');
   document.getElementById('player-score').textContent = playerScore;
 
   if (gameOver) {
